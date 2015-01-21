@@ -12,7 +12,7 @@ function generateLink() {
     var activeTab = tabs[0],
         url = activeTab.url;
     $.ajax({
-      url:"http://www.wut.link/links",
+      url:"http://wut.link/links",
       type:"POST",
       dataType: "json",
       data:{
