@@ -7,6 +7,7 @@
   "permissions": [
     "http://www.wut.link/",
     "https://www.wut.link/",
+    "http://wut.link/",
     "https://wut.link/",
     "tabs",
     "storage"
