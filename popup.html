@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Wut.link URL Shortener Chrome Extension</title>
+    <style>
+      body {
+        font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family:"Helvetica";
+        background:#0D0D1D;
+        color:#aaa;
+        min-width:300px;
+        text-align:center;
+      }
+      body a {
+        cursor:pointer;
+        color:.1s;
+      }
+      body a:hover {
+        color:#fff;
+        transition:color .8s;
+      }
+      textarea {
+        margin-top: 1em;
+        padding: 1em;
+        height: 1em;
+        overflow:hidden;
+        text-align: center;
+        border: 1px dotted #083D41;
+        border-radius: 4px;
+        background:none;
+        resize:none;
+        box-shadow:none;
+        outline:none;
+        color:#aaa;
+        cursor:pointer;
+        opacity:0;
+        transition:opacity 1s linear;
+      }
+      textarea.loaded {
+        opacity:1;
+      }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <a id="generateLink">Generate Link to Page</a>
+    <textarea id="link" tabindex="-1"></textarea>
+  </body>
+</html>
+
