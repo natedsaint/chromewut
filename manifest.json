@@ -5,6 +5,7 @@
   "version": "0.0.1",
 
   "permissions": [
+    "http://fonts.googleapis.com/",
     "http://www.wut.link/",
     "https://www.wut.link/",
     "http://wut.link/",
