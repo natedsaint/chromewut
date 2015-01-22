@@ -1,6 +1,5 @@
       body {
         font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-family:"Helvetica";
         background:#0D0D1D;
         color:#aaa;
         min-width:300px;
@@ -15,6 +14,7 @@
         transition:color .8s;
       }
       textarea {
+        font-family: "Raleway";
         margin-top: 1em;
         padding: 1em 0;
         height: 1em;
