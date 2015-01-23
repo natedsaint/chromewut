@@ -15,37 +15,42 @@
       }
       textarea {
         font-family: "Raleway";
-        margin-top: 1em;
-        padding: 1em 0;
-        height: 1em;
+        height:14px;
         overflow:hidden;
         text-align: center;
-        border: 1px dotted #083D41;
-        border-radius: 4px;
+        border:0;
         background:none;
         resize:none;
         box-shadow:none;
         outline:none;
         color:#aaa;
         cursor:pointer;
-        width:100%;
+        width:80%;
+        display:inline-block;
+        margin:0;
+        padding:12px 0;
       }
       .linkHolder {
         width:80%;
+        margin-top:12px;
         position:relative;
-        margin:0 auto;
+        margin:10px auto;
         opacity:0;
         transition:opacity 1s linear;
+        border: 1px dotted #083D41;
+        border-radius:4px;
         overflow:hidden;
+        padding:0;
+        height:38px;
       }
       .linkHolder::after {
         content:'Copied to Clipboard';
         display:block;
         width:100%;
-        height:1em;
-        padding:1em 0;
+        height:14px;
+        padding:12px 0;
         background:rgba(0,0,0,.8);
-        bottom:2px;
+        bottom:0;
         left:0;
         position:absolute;
         pointer-events:none;
@@ -61,18 +66,17 @@
       }
       #copyButton {
         content:'';
-        display:block;
-        width:1em;
-        height:1em;
-        padding:1em;
-        position:absolute;
-        right:0;
-        bottom:2px;
+        display:inline-block;
+        float:right;
+        width:14px;
+        height:14px;
+        padding:12px;
         background:url(copy.png) no-repeat center center #083D41;
         border-top-right-radius:4px;
         border-bottom-right-radius:4px;
         cursor:pointer;
         transition:background-color 1s linear;
+        margin:0;
       }
       #copyButton:hover {
         background-color:#2A5F63;
