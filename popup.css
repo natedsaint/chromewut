@@ -1,17 +1,16 @@
+      * {
+        box-sizing: border-box;
+      }
       body {
         font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        background:#0D0D1D;
-        color:#aaa;
+        color:#444;
         min-width:300px;
         text-align:center;
+        padding: 5px;
       }
       body a {
         cursor:pointer;
         transition:color .1s;
-      }
-      body a:hover {
-        color:#fff;
-        transition:color .8s;
       }
       textarea {
         font-family: "Raleway";
@@ -23,34 +22,38 @@
         resize:none;
         box-shadow:none;
         outline:none;
-        color:#aaa;
         cursor:pointer;
-        width:80%;
+        width:100%;
         display:inline-block;
         margin:0;
-        padding:12px 0;
+        padding: 12px 36px 12px 0;
       }
       input[type=text], input[type=url] {
         display:block;
         margin:0 auto;
-        width:80%;
-        text-align: center;
+        width:100%;
+        text-align: left;
         border-radius:4px;
-        border:none;
+        border:1px solid #aaa;
         height:20px;
+        padding: 12px;
       }
       .generateButton:hover {
+        font-family: "Raleway";
         background-color: #0F495C;
         color:#fff;
       }
       .generateButton {
         background-color:#666;
         border-color: #0F566C;
-        padding:4px;
+        padding:12px;
         margin-top:10px;
         display:block;
         color:#fff;
         border-radius:4px;
+        text-transform: uppercase;
+        width: 50%;
+        margin-left: 50%;
       }
       .generateButton.disabled {
         cursor:wait;
@@ -58,10 +61,11 @@
       }
       label {
         display:block;
-        margin-top:6px;
+        margin: 10px 0 6px 0;
+        text-align: left;
       }
       .linkHolder {
-        width:80%;
+        width:100%;
         margin-top:12px;
         position:relative;
         margin:10px auto;
@@ -81,6 +85,7 @@
         height:14px;
         padding:12px 0;
         background:rgba(0,0,0,.8);
+        color: #fff;
         bottom:0;
         left:0;
         position:absolute;
@@ -100,15 +105,15 @@
         content:'';
         display:inline-block;
         float:right;
-        width:14px;
-        height:14px;
-        padding:12px;
+        padding:18px;
         background:url(copy.png) no-repeat center center #083D41;
         border-top-right-radius:4px;
         border-bottom-right-radius:4px;
         cursor:pointer;
         transition:background-color 1s linear;
-        margin:0;
+        position: absolute;
+        top: 0;
+        right: 0;
       }
       #copyButton:hover {
         background-color:#2A5F63;

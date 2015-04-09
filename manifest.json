@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Wut.link Chrome Integration",
   "description": "Extention to generate a wut.link url from your currently viewed url",
-  "version": "0.0.1",
+  "version": "0.1",
 
   "permissions": [
     "http://fonts.googleapis.com/",
@@ -14,13 +14,13 @@
     "storage"
   ],
   "web_accessible_resources":[
-    "app/"
+    "fonts/*.woff2"
   ],
   "browser_action": {
     "default_icon": "wut.png",
     "default_popup": "popup.html"
   },
-  "icons": { 
-    "128": "wut.png" 
+  "icons": {
+    "128": "wut.png"
   }
 }

@@ -74,9 +74,3 @@ var wut = new WutController();
         wut.bindListeners();
     });
 })(jQuery,wut);
-
-
-
-
-
-
