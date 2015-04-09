@@ -38,6 +38,13 @@
         height:20px;
         padding: 12px;
       }
+      .linkOptions {
+      }
+      .copyAsapContainer {
+        display: inline-block;
+        height: 48px;
+        width: 50%;
+      }
       .generateButton:hover {
         font-family: "Raleway";
         background-color: #0F495C;
@@ -48,18 +55,17 @@
         border-color: #0F566C;
         padding:12px;
         margin-top:10px;
-        display:block;
+        display:inline-block;
         color:#fff;
         border-radius:4px;
         text-transform: uppercase;
-        width: 50%;
-        margin-left: 50%;
+        width: 40%;
       }
       .generateButton.disabled {
         cursor:wait;
         background-color:#333;
       }
-      label {
+      .formFields label {
         display:block;
         margin: 10px 0 6px 0;
         text-align: left;

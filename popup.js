@@ -27,7 +27,8 @@ WutController.prototype = {
         },2000);
     },
     generateLink : function() {
-        var url = $("#urlField").val() || $("#urlField").attr("placeholder"),
+        var controller = this,
+            url = $("#urlField").val() || $("#urlField").attr("placeholder"),
             activateDate = $("#activationDateField").val(),
             deactivateDate = $("#deactivationDateField").val(),
             button = $("#generateLink");
@@ -51,6 +52,10 @@ WutController.prototype = {
                 $("#link").html(response.proxyUrl);
                 $(".linkHolder").addClass("loaded");
                 button.removeClass("disabled").html("Create Link");
+                
+                if ($('#copyAsap').is(':checked')) {
+                    controller.executeCopy();
+                }
             }
         });
     },
@@ -60,7 +65,7 @@ WutController.prototype = {
             $("#urlField").attr("placeholder",tabs[0].url);
         });
 
-        $("#generateLink").on("click",this.generateLink);
+        $("#generateLink").on("click", $.proxy(this.generateLink, this));
         $("#link").on("click",this.selectAll);
         $("#copyButton").on("click",this.executeCopy);
     }
