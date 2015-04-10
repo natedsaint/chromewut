@@ -1,13 +1,11 @@
-/* globals jQuery, controller, chrome */
+/* globals jQuery, wut, chrome, Message */
 "use strict";
 
-var WutController = function() {
-
-};
+var WutController = function () {};
 
 WutController.prototype = {
     pad: function(n){
-        return n<10 ? '0'+n : n
+        return n < 10 ? '0' + n : n;
     },
     selectAll: function() {
         $("#link").focus();
@@ -49,15 +47,40 @@ WutController.prototype = {
                 deactivateDate: deactivateDate
             },
             success: function(response,data) {
-                $("#link").html(response.proxyUrl);
-                $(".linkHolder").addClass("loaded");
-                button.removeClass("disabled").html("Create Link");
-                
-                if ($('#copyAsap').is(':checked')) {
-                    controller.executeCopy();
+                if (response.errors) {
+                    controller.onGenerateLinkError(response.errors);
+                } else {
+                    controller.onGenerateLinkSuccess(response);
                 }
+                
+                controller.resetGenerateLinkButton();
             }
         });
+    },
+    onGenerateLinkError: function (errors) {
+        var text = [];
+        
+        if (typeof errors === "object") {
+            for (var error in errors) {
+                text = text.concat(errors[error]);
+            }
+        }
+        
+        if (text.length) {
+            text.unshift("A link wasn't created because:<br>");
+            Message.show(text.join('<br>'));
+        }
+    },
+    onGenerateLinkSuccess: function (response) {
+        var button = $("#generateLink");
+        
+        $("#link").html(response.proxyUrl);
+        $(".linkHolder").addClass("loaded");
+        button.removeClass("disabled").html("Create Link");
+        
+        if ($('#copyAsap').is(':checked')) {
+            this.executeCopy();
+        }
     },
     bindListeners: function() {
         // set placeholder to current url (will use this if not provided by user)
@@ -68,6 +91,11 @@ WutController.prototype = {
         $("#generateLink").on("click", $.proxy(this.generateLink, this));
         $("#link").on("click",this.selectAll);
         $("#copyButton").on("click",this.executeCopy);
+    },
+    resetGenerateLinkButton: function () {
+        var button = $("#generateLink");
+        
+        button.removeClass("disabled").html("Create Link");
     }
 };
 

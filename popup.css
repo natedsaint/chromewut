@@ -125,3 +125,24 @@
         background-color:#2A5F63;
         transition:background-color .2s linear;
       }
+    .alertContainer {
+        transition: visibility 0.3s linear, opacity 0.3s linear;
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 20px solid rgba(0, 0, 0, 0.5);
+    }
+    .alertContainer .wrapper {
+        background-color: #fff;
+        padding: 15px 10px 10px 10px;
+        height: 100%;
+        overflow-y: auto;
+    }
+    .alertContainer .message {
+        padding-bottom: 10px;
+        text-align: left;
+    }
