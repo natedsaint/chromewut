@@ -1,21 +1,35 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Wut.link URL Shortener Chrome Extension</title>
-    <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-    <link href="popup.css" rel="stylesheet" type="text/css">
-    <script src="jquery.min.js"></script>
-    <script src="popup.js"></script>
-  </head>
-  <body>
-    <label for="urlField">link to</label><input type="url" placeholder="" id="urlField" name="url" />
-    <label for="activationDateField">activate on</label><input type="text" id="activationDateField" name="activateDate" placeholder="yyyy/mm/dd" />
-    <label for="deactivationDateField">deactivate on</label><input type="text" id="deactivationDateField" name="deactivateDate" placeholder="yyyy/mm/dd" />
-    <a id="generateLink" class="generateButton">Create Link</a>
-    <div class="linkHolder">
-      <textarea id="link" tabindex="-1"></textarea>
-      <div id="copyButton"></div>
-    </div>
-  </body>
+    <head>
+        <title>Wut.link URL Shortener Chrome Extension</title>
+        <link href="fonts.css" rel="stylesheet" type="text/css">
+        <link href="popup.css" rel="stylesheet" type="text/css">
+        <script src="jquery.min.js"></script>
+        <script src="alert.js"></script>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <div class="formFields">
+          <label for="urlField">Link to</label><input type="url" placeholder="" id="urlField" name="url" />
+          <label for="activationDateField">Activate on (optional)</label><input type="text" id="activationDateField" name="activateDate" placeholder="yyyy/mm/dd" />
+          <label for="deactivationDateField">Deactivate on (optional)</label><input type="text" id="deactivationDateField" name="deactivateDate" placeholder="yyyy/mm/dd" />
+        </div>
+        <div class="linkOptions">
+            <div class="copyAsapContainer">
+                <input type="checkbox" id="copyAsap" checked><label for="copyAsap">To Clipboard ASAP</label>
+            </div>
+            <a id="generateLink" class="generateButton">Create Link</a>
+        </div>
+        <div class="linkHolder">
+            <textarea id="link" tabindex="-1"></textarea>
+            <div id="copyButton"></div>
+        </div>
+        <div class="alertContainer">
+            <div class="wrapper">
+                <div class="message">Press the OK button below to close this dialog.</div>
+                <a id="ok" class="generateButton">OK</a>
+            </div>
+        </div>
+    </body>
 </html>
 
