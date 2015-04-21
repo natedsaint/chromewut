@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     jasmine = require('gulp-jasmine'),
-    markdown = require('gulp-markdown');
+    markdown = require('gulp-markdown'),
+    coverage = require('gulp-coverage');
 
 var filePaths = [
     'lib/jquery.min.js',
@@ -33,7 +34,14 @@ gulp.task('readme',function() {
 
 gulp.task('test',function() {
     return gulp.src('spec/wuttest.js')
-        .pipe(jasmine());
+        .pipe(coverage.instrument({
+            pattern: ['lib/*.js'],
+            debugDirectory: 'debug'
+        }))
+        .pipe(jasmine())
+        .pipe(coverage.gather())
+        .pipe(coverage.format())
+        .pipe(gulp.dest('reports'));
 });
 
 gulp.task('default',['minify','readme']);

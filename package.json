@@ -30,6 +30,7 @@
     "gulp-uglify": "0.3.x",
     "gulp-jasmine":"0.3.x",
     "gulp-markdown":"1.0.0",
-    "gulp-concat":"2.3.4"
+    "gulp-concat":"2.3.4",
+    "gulp-coverage":"0.3.x"
   }
 }
