@@ -1,0 +1,35 @@
+{
+  "name": "chromewut",
+  "version": "0.3.0",
+  "description": "Chrome Extension for Wut.link",
+  "main": "all.min.js",
+  "scripts": {
+    "test": "gulp test",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/natedsaint/chromewut.git"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "shortener",
+    "wut"
+  ],
+  "author": "natedsaint@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natedsaint/chromewut/issues"
+  },
+  "homepage": "https://github.com/natedsaint/chromewut",
+  "dependencies" : {
+    "gulp": "3.8.x",
+    "jquery": "2.1.x",
+    "node-jsdom": "3.1.x",
+    "gulp-uglify": "0.3.x",
+    "gulp-jasmine":"0.3.x",
+    "gulp-markdown":"1.0.0",
+    "gulp-concat":"2.3.4"
+  }
+}
