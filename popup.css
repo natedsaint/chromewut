@@ -136,6 +136,10 @@
         bottom: 0;
         border: 20px solid rgba(0, 0, 0, 0.5);
     }
+    .alertContainer.showing {
+        visibility:visible;
+        opacity:1;
+    }
     .alertContainer .wrapper {
         background-color: #fff;
         padding: 15px 10px 10px 10px;

@@ -1,4 +1,4 @@
-/* globals describe, it, expect, jasmine, spyOn, require, beforeEach */
+/* globals describe, it, expect, jasmine, spyOn, require, beforeEach, chrome */
 "use strict";
 
 // Node.js logic to pull in the code if it's not here
@@ -89,8 +89,37 @@ describe('wut', function() {
             expect(wut.executeCopy).toEqual(jasmine.any(Function));
         });
 
-        // note: for node-jsdom, contentEditable is not implemented, so we 
-        // can't mock this method without lots of polyfills
+        it('should act on the form', function() {
+            jasmine.clock().install();
+            var textAreaSpy = {
+                    focus : jasmine.createSpy("focus"),
+                    select : jasmine.createSpy("select"),
+                    remove : jasmine.createSpy("remove")
+                },
+                addClassSpy = spyOn($.fn, "addClass"),
+                removeClassSpy = spyOn($.fn, "removeClass");
+
+            if (typeof document.execCommand === "undefined") {
+                document.execCommand = jasmine.createSpy();
+            } else {
+                spyOn(document,"execCommand");
+            }
+            spyOn(document,"createElement").and.returnValue(textAreaSpy);
+            spyOn(document.body,"appendChild");
+
+            wut.executeCopy();
+            
+            expect(textAreaSpy.focus).toHaveBeenCalled();
+            expect(textAreaSpy.select).toHaveBeenCalled();
+            expect(textAreaSpy.remove).toHaveBeenCalled();
+            expect(document.createElement).toHaveBeenCalledWith("textarea");
+            expect(document.execCommand).toHaveBeenCalledWith("Copy");
+            expect($.fn.addClass).toHaveBeenCalledWith("copied");
+
+            jasmine.clock().tick(2001);
+            expect($.fn.removeClass).toHaveBeenCalledWith("copied");
+        });
+
     });
 
     describe('wut.generateLink',function() {
@@ -266,9 +295,12 @@ describe('wut', function() {
             } else {
                 spyOn(chrome.tabs,"query");
             }
+            spyOn($.fn,"on");
             
             wut.bindListeners();
             expect(chrome.tabs.query).toHaveBeenCalled();
+            expect($.fn.on).toHaveBeenCalledWith("click",jasmine.any(Function));
+
         });
     });
 
@@ -276,6 +308,29 @@ describe('wut', function() {
         it('should exist', function() {
             expect(wut.resetGenerateLinkButton).toBeTruthy();
             expect(wut.resetGenerateLinkButton).toEqual(jasmine.any(Function));
+        });
+        it('should modify the generateLink button',function() {
+            spyOn($.fn,"removeClass");
+            spyOn($.fn,"html");
+            wut.resetGenerateLinkButton();
+            expect($.fn.removeClass).toHaveBeenCalledWith("disabled");
+            expect($.fn.html).toHaveBeenCalledWith("Create Link");
+        });
+    });
+
+    describe('wut.onTabQuery',function() {
+        it('should exist', function() {
+            expect(wut.onTabQuery).toBeTruthy();
+            expect(wut.onTabQuery).toEqual(jasmine.any(Function));
+        });
+        it('should set the placeholder value to the current tab',function() {
+            var TABS_URL = 'http://www.test.com',
+                tabs = [
+                    {'url':TABS_URL}
+                ];
+            spyOn($.fn,"attr");
+            wut.onTabQuery(tabs);
+            expect($.fn.attr).toHaveBeenCalledWith("placeholder",TABS_URL);
         });
     });
 
@@ -295,23 +350,46 @@ describe('message', function() {
             expect(message.show).toEqual(jasmine.any(Function));
         });
 
+        it('should show a message',function() {
+            var TEST_MSG = "test message";
+            spyOn(message.container,"addClass");
+            spyOn(message.message,"html");
+            message.show(TEST_MSG);
+            expect(message.container.addClass).toHaveBeenCalledWith("showing");
+            expect(message.message.html).toHaveBeenCalledWith(TEST_MSG);
+        });
+
     });
 
-    describe('message.hide',function() {
+    describe('message.hide', function() {
 
         it('should exist', function() {
             expect(message.hide).toBeTruthy();
             expect(message.hide).toEqual(jasmine.any(Function));
         });
 
+        it('should hide a message', function() {
+            spyOn(message.container,"removeClass");
+            message.hide();
+            expect(message.container.removeClass).toHaveBeenCalledWith("showing");
+        });
+
     });
 
-    describe('message.bindListeners',function() {
+    describe('message.bindListeners', function() {
 
         it('should exist', function() {
             expect(message.bindListeners).toBeTruthy();
             expect(message.bindListeners).toEqual(jasmine.any(Function));
         });
+
+        it('should initialize the listeners', function() {
+            spyOn($.fn,"find");
+            spyOn($.fn,"on");
+            message.bindListeners();
+            expect($.fn.find).toHaveBeenCalledWith('.message:first');
+            expect($.fn.on).toHaveBeenCalledWith("click",jasmine.any(Function));
+        })
 
     });
     
