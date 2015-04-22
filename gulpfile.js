@@ -6,11 +6,10 @@ var gulp = require('gulp'),
     coverage = require('gulp-coverage');
 
 var filePaths = [
-    'lib/jquery.min.js',
-    'lib/alert.js',
+    'web/jquery.min.js',
     'lib/WutController.js',
     'lib/AlertController.js',
-    'lib/startup.js'
+    'web/startup.js'
 ];
 
 gulp.task('minify',function() {
