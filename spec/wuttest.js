@@ -10,7 +10,7 @@ if (typeof message === "undefined" && typeof require !== "undefined") {
 var message = new AlertController();
 
 if (typeof wut === "undefined" && typeof require !== "undefined") {
-    var WutController = require("../lib/Wutcontroller.js");
+    var WutController = require("../lib/WutController.js");
 }
 
 var wut = new WutController(message);
