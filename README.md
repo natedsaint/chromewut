@@ -1,4 +1,4 @@
-##wut.link extension for chrome##
+# wut.link extension for chrome [![Build status](https://travis-ci.org/natedsaint/chromewut.png?branch=master)](https://travis-ci.org/natedsaint/chromewut)
 
 Requires developer mode: just choose "developer mode" from the extension menu, then choose "load unpacked extension" and point it to the root folder. Done.
 
