@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     jasmine = require('gulp-jasmine'),
     markdown = require('gulp-markdown'),
-    coverage = require('gulp-coverage');
+    coverage = require('gulp-coverage'),
+    coveralls = require('gulp-coveralls');
 
 var filePaths = [
     'web/jquery.min.js',
@@ -39,8 +40,13 @@ gulp.task('test',function() {
         }))
         .pipe(jasmine())
         .pipe(coverage.gather())
-        .pipe(coverage.format())
+        .pipe(coverage.format([{reporter:'html'},{reporter:'lcov'}]))
         .pipe(gulp.dest('reports'));
+});
+
+gulp.task('coveralls',function() {
+    return gulp.src('./reports/coverage.lcov')
+        .pipe(coveralls());
 });
 
 gulp.task('default',['minify','readme']);
