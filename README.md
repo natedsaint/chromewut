@@ -1,4 +1,5 @@
-# wut.link extension for chrome [![Build status](https://travis-ci.org/natedsaint/chromewut.svg?branch=master)](https://travis-ci.org/natedsaint/chromewut) [![Coverage Status](https://coveralls.io/repos/natedsaint/chromewut/badge.svg?branch=master)](https://coveralls.io/r/natedsaint/chromewut?branch=master) [![Dependency Status](https://gemnasium.com/natedsaint/chromewut.svg)](https://gemnasium.com/natedsaint/chromewut)
+# wut.link extension for chrome #
+[![Build status](https://travis-ci.org/natedsaint/chromewut.svg?branch=master)](https://travis-ci.org/natedsaint/chromewut) [![Coverage Status](https://coveralls.io/repos/natedsaint/chromewut/badge.svg?branch=master)](https://coveralls.io/r/natedsaint/chromewut?branch=master) [![Dependency Status](https://gemnasium.com/natedsaint/chromewut.svg)](https://gemnasium.com/natedsaint/chromewut)
 
 Requires developer mode: just choose "developer mode" from the extension menu, then choose "load unpacked extension" and point it to the root folder. Done.
 
