@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "wut.link extension",
   "description": "Extension to generate a wut.link url from your currently-viewed url",
-  "version": "0.3",
+  "version": "0.4",
 
   "permissions": [
     "http://www.wut.link/",
@@ -10,9 +10,12 @@
     "http://wut.link/",
     "https://wut.link/",
     "tabs",
-    "storage"
+    "storage",
+    "clipboardWrite"
   ],
-  "options_page" : "options.html",
+  "options_ui": {
+    "page": "options.html"
+  },
   "web_accessible_resources":[
     "fonts/*.woff2"
   ],
